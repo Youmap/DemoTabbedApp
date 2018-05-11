@@ -42,7 +42,7 @@ class YMTabBarTab : UIButton {
 		fatalError("init(coder:) has not been implemented")
 	}
 
-	override var intrinsicContentSize: CGSize { get { return CGSize(width: 48.0, height: 48.0) } }
+	override var intrinsicContentSize: CGSize { get { return CGSize(width: 40.0, height: 40.0) } }
 
 	override func imageRect(forContentRect contentRect: CGRect) -> CGRect {
 		return CGRect(origin: .zero, size: intrinsicContentSize)

@@ -29,7 +29,12 @@ class RootViewController: UIViewController {
 		let tabBarHeight = CGFloat(60)
 		let safeZoneHeight = CGFloat(44)
 		backgroundTabBarContainer.anchor(right: view.rightAnchor, bottom: safeBottomAnchor, left: view.leftAnchor, paddingBottom: -safeZoneHeight, height: tabBarHeight + safeZoneHeight)
-backgroundTabBarContainer.backgroundColor = .blue
+//backgroundTabBarContainer.backgroundColor = .blue
+
+		let gradientImage = UIImage(named: "tabBarBackgroundGradient")
+		let backgroundGradientView = UIImageView(image: gradientImage)
+		backgroundTabBarContainer.addSubview(backgroundGradientView)
+		backgroundGradientView.anchor(right: view.rightAnchor, bottom: safeBottomAnchor, left: view.leftAnchor, paddingBottom: -safeZoneHeight, height: tabBarHeight + safeZoneHeight + 16)
 
 		// Create the TabBar View Controller.
 		tabbarViewController = YMTabBarViewController(tabDelegates: tabbedViewControllers, displayView: view)

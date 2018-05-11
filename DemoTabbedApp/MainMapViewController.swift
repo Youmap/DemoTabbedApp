@@ -11,7 +11,7 @@ import UIKit
 class MainMapViewController : YMTabbedViewController {
 	
 	init() {
-		let iconName = "mapIcon"
+		let iconName = "homeIcon"
 		guard let icon = UIImage(named: iconName) else {
 			fatalError("\(iconName) is missing from Assets")
 		}
