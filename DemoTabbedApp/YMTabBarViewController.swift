@@ -9,26 +9,26 @@
 import UIKit
 
 class YMTabBarViewController : UIViewController, YMTabBarTabEventDelegate {
+	private let displayView: UIView
 	private let tabDelegates : [YMTabBarTabViewDelegate]
+	private var tabBarView = YMTabBarView()
+	internal var currentSelectedTab : YMTabBarTab!
 
-	private var currentSelectedTab : YMTabBarTab!
-
-	required init(tabDelegates : [YMTabBarTabViewDelegate]) {
+	required init(tabDelegates : [YMTabBarTabViewDelegate], displayView: UIView) {
 		self.tabDelegates = tabDelegates
+		self.displayView = displayView
 		super.init(nibName: nil, bundle: nil)
 	}
 
 	required init?(coder : NSCoder) {
 		self.tabDelegates = []
+		self.displayView = UIView()
 		super.init(coder: coder)
         fatalError("init(coder:) has not been implemented")
 	}
 
 	override func viewDidLoad() {
-		// Create the tabbar
-		let tabBarView = YMTabBarView()
-
-		// Add it to the view
+		// Add the tabbarView to the view
 		view = tabBarView
 		tabBarView.anchor(top: view.topAnchor, right: view.rightAnchor, bottom: view.bottomAnchor, left: view.leftAnchor)
 
@@ -38,13 +38,12 @@ class YMTabBarViewController : UIViewController, YMTabBarTabEventDelegate {
 		}
 		
 		currentSelectedTab = tabBarView.tabs.first
+		currentSelectedTab.isSelected = true
 	}
 
 	override func viewWillAppear(_ animated: Bool) {
-		show(uiViewController: currentSelectedTab.uiViewController)
-	}
-
-	private func show(uiViewController: UIViewController) {
+		// Show the initial viewController's view
+		displayView.insertSubview(currentSelectedTab.uiViewController.view, belowSubview: tabBarView.superview!)
 	}
 
 	internal func tabSelect(tab : YMTabBarTab) {
@@ -53,8 +52,15 @@ class YMTabBarViewController : UIViewController, YMTabBarTabEventDelegate {
 	}
 
 	private func animate(from fromTab: YMTabBarTab, to toTab : YMTabBarTab) {
-//		toTab.tabbedViewController.uiViewController.dismiss(animated: true, completion: nil)
-print("self.parent = \(self.parent.debugDescription)")
-//		self.parent?.present(fromTab.tabbedViewController.uiViewController, animated: true, completion: nil)
+		// Update the tabbed view controller's content
+		fromTab.uiViewController.view.removeFromSuperview()
+		fromTab.uiViewController.removeFromParentViewController()
+
+		displayView.insertSubview(toTab.uiViewController.view, belowSubview: tabBarView.superview!)
+		parent?.addChildViewController(toTab.uiViewController)
+
+		// Update the tabs
+		fromTab.isSelected = false
+		toTab.isSelected = true
 	}
 }

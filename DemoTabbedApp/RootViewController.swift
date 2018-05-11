@@ -29,23 +29,16 @@ class RootViewController: UIViewController {
 		let tabBarHeight = CGFloat(60)
 		let safeZoneHeight = CGFloat(44)
 		backgroundTabBarContainer.anchor(right: view.rightAnchor, bottom: safeBottomAnchor, left: view.leftAnchor, paddingBottom: -safeZoneHeight, height: tabBarHeight + safeZoneHeight)
-//backgroundTabBarContainer.backgroundColor = .blue
+backgroundTabBarContainer.backgroundColor = .blue
 
 		// Create the TabBar View Controller.
-		tabbarViewController = YMTabBarViewController(tabDelegates: tabbedViewControllers)
+		tabbarViewController = YMTabBarViewController(tabDelegates: tabbedViewControllers, displayView: view)
 		backgroundTabBarContainer.addSubview(tabbarViewController.view)
 
 		// Position the tabbar anchor to the top of the tabbar container
 		tabbarViewController.view.anchor(top: backgroundTabBarContainer.topAnchor, right: backgroundTabBarContainer.rightAnchor, left: backgroundTabBarContainer.leftAnchor, height: tabBarHeight)
-	}
 
-	override func viewWillAppear(_ animated: Bool) {
 		self.addChildViewController(tabbarViewController)
-	}
-
-	override func viewDidAppear(_ animated: Bool) {
-		self.addChildViewController(tabbarViewController)
-//		tabbarViewController.selectDefaultTab()
 	}
 
 	override func didReceiveMemoryWarning() {

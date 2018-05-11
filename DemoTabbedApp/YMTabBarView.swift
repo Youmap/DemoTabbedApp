@@ -80,7 +80,7 @@ class YMTabBarView : UIView {
 		let tab = YMTabBarTab(eventDelegate: eventDelegate, viewDelegate: viewDelegate)
 		tabs.append(tab)
 //let hue = CGFloat(arc4random_uniform(100)) / 100.0
-//tab.backgroundColor = UIColor(hue: hue, saturation: 1.0, brightness: 1.0, alpha: 1.0)
+//tab.backgroundColor = .yellow	//UIColor(hue: hue, saturation: 1.0, brightness: 1.0, alpha: 1.0)
 		stackView.addArrangedSubview(tab)
 		tab.anchor(top: stackView.topAnchor, paddingTop: 10.0)
 	}
