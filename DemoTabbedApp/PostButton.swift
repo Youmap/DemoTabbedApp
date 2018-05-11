@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PostButtonViewController : YMTabbedViewControllerBase {
+class PostButtonViewController : YMTabbedViewController {
 	init() {
 		let iconName = "postButtonIcon"
 		guard let icon = UIImage(named: iconName) else {
@@ -19,8 +19,5 @@ class PostButtonViewController : YMTabbedViewControllerBase {
 	
 	required init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
-	}
-	
-	override func handleViewControllerSelected() {
 	}
 }

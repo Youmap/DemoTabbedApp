@@ -8,8 +8,8 @@
 
 import UIKit
 
-class DiscoveryViewController : YMTabbedViewControllerBase {
-	
+class DiscoveryViewController : YMTabbedViewController {
+
 	init() {
 		let iconName = "compassIcon"
 		guard let icon = UIImage(named: iconName) else {
@@ -17,11 +17,15 @@ class DiscoveryViewController : YMTabbedViewControllerBase {
 		}
     	super.init(normalIcon: icon, highlightedIcon: icon, selectedIcon: icon, disabledIcon: icon)
 	}
-	
+
 	required init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
-	
-	override func handleViewControllerSelected() {
+
+	override func viewDidLoad() {
+		view.backgroundColor = .magenta
+	}
+
+	override func viewWillAppear(_ animated: Bool) {
 	}
 }

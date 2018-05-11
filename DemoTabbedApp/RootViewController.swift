@@ -10,12 +10,18 @@ import UIKit
 
 class RootViewController: UIViewController {
 
+	var tabbarViewController : YMTabBarViewController!
+
+	required init?(coder aDecoder: NSCoder) {
+		super.init(coder: aDecoder)
+	}
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 //view.backgroundColor = .yellow
 
 		// Create the tabbed ViewControllers to display.
-		let tabbedViewControllers : [YMTabbedViewController] = [MainMapViewController(), DiscoveryViewController(), PostButtonViewController(), NoticationsViewController(), ProfileViewController()]
+		let tabbedViewControllers : [YMTabBarTabViewDelegate] = [MainMapViewController(), DiscoveryViewController(), PostButtonViewController(), NoticationsViewController(), ProfileViewController()]
 
 		// Create a background view that contains the tabbar.
 		let backgroundTabBarContainer = UIView()
@@ -26,11 +32,20 @@ class RootViewController: UIViewController {
 //backgroundTabBarContainer.backgroundColor = .blue
 
 		// Create the TabBar View Controller.
-		let tabbarViewController = YMTabBarViewController(tabbedViewControllers: tabbedViewControllers)
+		tabbarViewController = YMTabBarViewController(tabDelegates: tabbedViewControllers)
 		backgroundTabBarContainer.addSubview(tabbarViewController.view)
 
 		// Position the tabbar anchor to the top of the tabbar container
 		tabbarViewController.view.anchor(top: backgroundTabBarContainer.topAnchor, right: backgroundTabBarContainer.rightAnchor, left: backgroundTabBarContainer.leftAnchor, height: tabBarHeight)
+	}
+
+	override func viewWillAppear(_ animated: Bool) {
+		self.addChildViewController(tabbarViewController)
+	}
+
+	override func viewDidAppear(_ animated: Bool) {
+		self.addChildViewController(tabbarViewController)
+//		tabbarViewController.selectDefaultTab()
 	}
 
 	override func didReceiveMemoryWarning() {

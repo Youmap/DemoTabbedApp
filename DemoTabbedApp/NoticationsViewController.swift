@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NoticationsViewController : YMTabbedViewControllerBase {
+class NoticationsViewController : YMTabbedViewController {
 	
 	init() {
  		let iconName = "notificationIcon"
@@ -22,6 +22,10 @@ class NoticationsViewController : YMTabbedViewControllerBase {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
-	override func handleViewControllerSelected() {
+	override func viewDidLoad() {
+		view.backgroundColor = .cyan
+	}
+	
+	override func viewWillAppear(_ animated: Bool) {
 	}
 }

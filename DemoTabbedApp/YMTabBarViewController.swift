@@ -8,64 +8,18 @@
 
 import UIKit
 
-protocol YMTabbedViewController {
-	var normalIcon : UIImage { get }
-	var highlightedIcon : UIImage { get }
-	var selectedIcon : UIImage { get }
-	var disabledIcon : UIImage { get }
-	func handleViewControllerSelected()
-}
-
-class YMTabbedViewControllerBase :  UIViewController, YMTabbedViewController{
-	
-	init(normalIcon : UIImage, highlightedIcon : UIImage, selectedIcon : UIImage, disabledIcon : UIImage) {
-		_normalIcon = normalIcon
-		_highlightedIcon = highlightedIcon
-		_selectedIcon = selectedIcon
-		_disabledIcon = disabledIcon
-		super.init(nibName: nil, bundle: nil)
-	}
-	
-	required init?(coder aDecoder: NSCoder) {
-		fatalError("init(coder:) has not been implemented")
-	}
-	
-	private let _normalIcon : UIImage
-	var normalIcon: UIImage {
-		get { return _normalIcon }
-	}
-	
-	private let _highlightedIcon : UIImage
-	var highlightedIcon: UIImage {
-		get { return _highlightedIcon }
-	}
-	
-	private let _selectedIcon : UIImage
-	var selectedIcon: UIImage {
-		get { return _selectedIcon }
-	}
-	
-	private let _disabledIcon : UIImage
-	var disabledIcon: UIImage {
-		get { return _disabledIcon }
-	}
-
-	func handleViewControllerSelected() {
-	}
-}
-
-class YMTabBarViewController : UIViewController {
-	private let tabbedViewControllers : [YMTabbedViewController]
+class YMTabBarViewController : UIViewController, YMTabBarTabEventDelegate {
+	private let tabDelegates : [YMTabBarTabViewDelegate]
 
 	private var currentSelectedTab : YMTabBarTab!
 
-	required init(tabbedViewControllers : [YMTabbedViewController]) {
-		self.tabbedViewControllers = tabbedViewControllers
+	required init(tabDelegates : [YMTabBarTabViewDelegate]) {
+		self.tabDelegates = tabDelegates
 		super.init(nibName: nil, bundle: nil)
 	}
 
 	required init?(coder : NSCoder) {
-		self.tabbedViewControllers = []
+		self.tabDelegates = []
 		super.init(coder: coder)
         fatalError("init(coder:) has not been implemented")
 	}
@@ -79,12 +33,28 @@ class YMTabBarViewController : UIViewController {
 		tabBarView.anchor(top: view.topAnchor, right: view.rightAnchor, bottom: view.bottomAnchor, left: view.leftAnchor)
 
 		// Add the tabs
-		for vc in self.tabbedViewControllers {
-			tabBarView.addTab(tabBarViewController: self, tabbedViewController: vc)
+		for delegate in self.tabDelegates {
+			tabBarView.addTab(eventDelegate: self, viewDelegate: delegate)
 		}
+		
+		currentSelectedTab = tabBarView.tabs.first
 	}
 
-	func tabSelect(tab : YMTabBarTab) {
+	override func viewWillAppear(_ animated: Bool) {
+		show(uiViewController: currentSelectedTab.uiViewController)
+	}
+
+	private func show(uiViewController: UIViewController) {
+	}
+
+	internal func tabSelect(tab : YMTabBarTab) {
+		animate(from: currentSelectedTab, to: tab)
 		currentSelectedTab = tab
+	}
+
+	private func animate(from fromTab: YMTabBarTab, to toTab : YMTabBarTab) {
+//		toTab.tabbedViewController.uiViewController.dismiss(animated: true, completion: nil)
+print("self.parent = \(self.parent.debugDescription)")
+//		self.parent?.present(fromTab.tabbedViewController.uiViewController, animated: true, completion: nil)
 	}
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileViewController : YMTabbedViewControllerBase {
+class ProfileViewController : YMTabbedViewController {
 	
 	init() {
 		let iconName = "profileIcon"
@@ -22,6 +22,10 @@ class ProfileViewController : YMTabbedViewControllerBase {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
-	override func handleViewControllerSelected() {
+	override func viewDidLoad() {
+		view.backgroundColor = .green
+	}
+	
+	override func viewWillAppear(_ animated: Bool) {
 	}
 }

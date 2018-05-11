@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		271CA39D20A5FD830052A6F3 /* YMTabbedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271CA39C20A5FD830052A6F3 /* YMTabbedViewController.swift */; };
 		27D29FF5209C7ADA0099D488 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D29FF4209C7ADA0099D488 /* AppDelegate.swift */; };
 		27D29FF7209C7ADA0099D488 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D29FF6209C7ADA0099D488 /* RootViewController.swift */; };
 		27D29FFA209C7ADA0099D488 /* Root.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27D29FF8209C7ADA0099D488 /* Root.storyboard */; };
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		271CA39C20A5FD830052A6F3 /* YMTabbedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YMTabbedViewController.swift; sourceTree = "<group>"; };
 		27D29FF1209C7ADA0099D488 /* DemoTabbedApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoTabbedApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27D29FF4209C7ADA0099D488 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		27D29FF6209C7ADA0099D488 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				27D2A024209C7D4C0099D488 /* UIViewController+SafeArea.swift */,
 				27D2A03420A0CAF30099D488 /* YMTabBarView.swift */,
 				27D2A026209C7E5A0099D488 /* YMTabBarViewController.swift */,
+				271CA39C20A5FD830052A6F3 /* YMTabbedViewController.swift */,
 			);
 			path = DemoTabbedApp;
 			sourceTree = "<group>";
@@ -215,7 +218,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = Heliotropix;
 				TargetAttributes = {
 					27D29FF0209C7ADA0099D488 = {
@@ -288,6 +291,7 @@
 			files = (
 				27D2A02B209C807D0099D488 /* MainMapViewController.swift in Sources */,
 				27D2A027209C7E5A0099D488 /* YMTabBarViewController.swift in Sources */,
+				271CA39D20A5FD830052A6F3 /* YMTabbedViewController.swift in Sources */,
 				27D2A033209CAE910099D488 /* ProfileViewController.swift in Sources */,
 				27D2A03520A0CAF30099D488 /* YMTabBarView.swift in Sources */,
 				27D2A029209C80570099D488 /* PostButton.swift in Sources */,
@@ -365,6 +369,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -372,6 +377,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -422,6 +428,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -429,6 +436,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;

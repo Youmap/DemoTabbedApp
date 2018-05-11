@@ -8,38 +8,51 @@
 
 import UIKit
 
+protocol YMTabBarTabViewDelegate {
+	var normalIcon : UIImage { get }
+	var highlightedIcon : UIImage { get }
+	var selectedIcon : UIImage { get }
+	var disabledIcon : UIImage { get }
+	var uiViewController : UIViewController { get }
+}
+
+protocol YMTabBarTabEventDelegate {
+	func tabSelect(tab : YMTabBarTab)
+}
+
 class YMTabBarTab : UIButton {
 
-	private let tabBarViewController : YMTabBarViewController
-	private let tabbedViewController : YMTabbedViewController
+	private let eventDelegate : YMTabBarTabEventDelegate
+	private let viewDelegate : YMTabBarTabViewDelegate
 
-	init(tabBarViewController : YMTabBarViewController, tabbedViewController : YMTabbedViewController) {
-		self.tabBarViewController = tabBarViewController
-		self.tabbedViewController = tabbedViewController
+	init(eventDelegate : YMTabBarTabEventDelegate, viewDelegate : YMTabBarTabViewDelegate) {
+		self.eventDelegate = eventDelegate
+		self.viewDelegate = viewDelegate
 
 		super.init(frame: .zero)
 
-		self.setImage(tabbedViewController.normalIcon, for: .normal)
-		self.setImage(tabbedViewController.highlightedIcon, for: .highlighted)
-		self.setImage(tabbedViewController.selectedIcon, for: .selected)
-		self.setImage(tabbedViewController.disabledIcon, for: .disabled)
+		self.setImage(viewDelegate.normalIcon, for: .normal)
+		self.setImage(viewDelegate.highlightedIcon, for: .highlighted)
+		self.setImage(viewDelegate.selectedIcon, for: .selected)
+		self.setImage(viewDelegate.disabledIcon, for: .disabled)
 		self.addTarget(self, action: #selector(handleTabSelect), for: .touchUpInside)
 	}
-	
+
 	required init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
-	
-	@objc internal func handleTabSelect() {
-		// Tell the tabbar viewcontroller this tab was selected
-		tabBarViewController.tabSelect(tab: self)
-	}
-	
+
 	override var intrinsicContentSize: CGSize { get { return CGSize(width: 48.0, height: 48.0) } }
-	
+
 	override func imageRect(forContentRect contentRect: CGRect) -> CGRect {
 		return CGRect(origin: .zero, size: intrinsicContentSize)
 	}
+
+	@objc internal func handleTabSelect() {
+		eventDelegate.tabSelect(tab: self)
+	}
+
+	internal var uiViewController : UIViewController { get { return viewDelegate.uiViewController }}
 }
 
 class YMTabBarView : UIView {
@@ -56,18 +69,18 @@ class YMTabBarView : UIView {
 		super.init(frame: .zero)
 		addSubview(stackView)
 		stackView.anchor(top: self.topAnchor, right: self.rightAnchor, bottom: self.bottomAnchor, left: self.leftAnchor,
-			paddingRight: 10, paddingLeft: 10)
+			paddingRight: 20, paddingLeft: 20)
 	}
 
 	required init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
 
-	internal func addTab(tabBarViewController : YMTabBarViewController, tabbedViewController : YMTabbedViewController) {
-		let tab = YMTabBarTab(tabBarViewController: tabBarViewController, tabbedViewController: tabbedViewController)
+	internal func addTab(eventDelegate : YMTabBarTabEventDelegate, viewDelegate : YMTabBarTabViewDelegate) {
+		let tab = YMTabBarTab(eventDelegate: eventDelegate, viewDelegate: viewDelegate)
 		tabs.append(tab)
-let hue = CGFloat(arc4random_uniform(100)) / 100.0
-tab.backgroundColor = UIColor(hue: hue, saturation: 1.0, brightness: 1.0, alpha: 1.0)
+//let hue = CGFloat(arc4random_uniform(100)) / 100.0
+//tab.backgroundColor = UIColor(hue: hue, saturation: 1.0, brightness: 1.0, alpha: 1.0)
 		stackView.addArrangedSubview(tab)
 		tab.anchor(top: stackView.topAnchor, paddingTop: 10.0)
 	}
