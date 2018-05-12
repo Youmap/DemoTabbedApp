@@ -20,4 +20,6 @@ class PostButtonViewController : YMTabbedViewController {
 	required init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
+
+	override var intrinsicContentSize: CGSize { get { return CGSize(width: 60.0, height: 60.0) } }
 }

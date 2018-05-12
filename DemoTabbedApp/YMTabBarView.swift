@@ -13,6 +13,7 @@ protocol YMTabBarTabViewDelegate {
 	var highlightedIcon : UIImage { get }
 	var selectedIcon : UIImage { get }
 	var disabledIcon : UIImage { get }
+	var intrinsicContentSize : CGSize { get }
 	var uiViewController : UIViewController { get }
 }
 
@@ -21,6 +22,8 @@ protocol YMTabBarTabEventDelegate {
 }
 
 class YMTabBarTab : UIButton {
+
+	internal static let tabBarHeight = CGFloat(60)
 
 	private let eventDelegate : YMTabBarTabEventDelegate
 	private let viewDelegate : YMTabBarTabViewDelegate
@@ -42,10 +45,12 @@ class YMTabBarTab : UIButton {
 		fatalError("init(coder:) has not been implemented")
 	}
 
-	override var intrinsicContentSize: CGSize { get { return CGSize(width: 40.0, height: 40.0) } }
+	override var intrinsicContentSize: CGSize { get { return viewDelegate.intrinsicContentSize } }
 
 	override func imageRect(forContentRect contentRect: CGRect) -> CGRect {
-		return CGRect(origin: .zero, size: intrinsicContentSize)
+		let top = (YMTabBarTab.tabBarHeight - intrinsicContentSize.height) / 2.0
+		let origin = CGPoint(x: 0.0, y: top)
+		return CGRect(origin: origin, size: intrinsicContentSize)
 	}
 
 	@objc internal func handleTabSelect() {
@@ -61,7 +66,6 @@ class YMTabBarView : UIView {
 		let stack = UIStackView(frame: .zero)
 		stack.axis = .horizontal
 		stack.distribution = .equalCentering
-		stack.spacing = 10.0
 		return stack
 	}()
 
@@ -82,6 +86,6 @@ class YMTabBarView : UIView {
 //let hue = CGFloat(arc4random_uniform(100)) / 100.0
 //tab.backgroundColor = .yellow	//UIColor(hue: hue, saturation: 1.0, brightness: 1.0, alpha: 1.0)
 		stackView.addArrangedSubview(tab)
-		tab.anchor(top: stackView.topAnchor, paddingTop: 10.0)
+		tab.anchor(top: stackView.topAnchor)
 	}
 }

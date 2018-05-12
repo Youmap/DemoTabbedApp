@@ -43,5 +43,7 @@ class YMTabbedViewController :  UIViewController, YMTabBarTabViewDelegate {
 		get { return _disabledIcon }
 	}
 
+	var intrinsicContentSize: CGSize { get { return CGSize(width: 35.0, height: 35.0) } }
+
 	var uiViewController : UIViewController { get { return self }}
 }
