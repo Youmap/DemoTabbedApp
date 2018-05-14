@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		271CA39D20A5FD830052A6F3 /* YMTabbedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271CA39C20A5FD830052A6F3 /* YMTabbedViewController.swift */; };
+		271CA3A520AA0ADA0052A6F3 /* RALAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 271CA3A020AA0ADA0052A6F3 /* RALAnimation.m */; };
+		271CA3A620AA0ADA0052A6F3 /* RALEase.m in Sources */ = {isa = PBXBuildFile; fileRef = 271CA3A320AA0ADA0052A6F3 /* RALEase.m */; };
+		271CA3A720AA0ADA0052A6F3 /* RALUnitBezier.m in Sources */ = {isa = PBXBuildFile; fileRef = 271CA3A420AA0ADA0052A6F3 /* RALUnitBezier.m */; };
 		27D29FF5209C7ADA0099D488 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D29FF4209C7ADA0099D488 /* AppDelegate.swift */; };
 		27D29FF7209C7ADA0099D488 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D29FF6209C7ADA0099D488 /* RootViewController.swift */; };
 		27D29FFA209C7ADA0099D488 /* Root.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27D29FF8209C7ADA0099D488 /* Root.storyboard */; };
@@ -45,6 +48,13 @@
 
 /* Begin PBXFileReference section */
 		271CA39C20A5FD830052A6F3 /* YMTabbedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YMTabbedViewController.swift; sourceTree = "<group>"; };
+		271CA39F20AA0ADA0052A6F3 /* RALEase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RALEase.h; sourceTree = "<group>"; };
+		271CA3A020AA0ADA0052A6F3 /* RALAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RALAnimation.m; sourceTree = "<group>"; };
+		271CA3A120AA0ADA0052A6F3 /* RALUnitBezier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RALUnitBezier.h; sourceTree = "<group>"; };
+		271CA3A220AA0ADA0052A6F3 /* RALAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RALAnimation.h; sourceTree = "<group>"; };
+		271CA3A320AA0ADA0052A6F3 /* RALEase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RALEase.m; sourceTree = "<group>"; };
+		271CA3A420AA0ADA0052A6F3 /* RALUnitBezier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RALUnitBezier.m; sourceTree = "<group>"; };
+		271CA3A820AA0C390052A6F3 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		27D29FF1209C7ADA0099D488 /* DemoTabbedApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoTabbedApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27D29FF4209C7ADA0099D488 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		27D29FF6209C7ADA0099D488 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -94,6 +104,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		271CA39E20AA0ADA0052A6F3 /* RALAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				271CA39F20AA0ADA0052A6F3 /* RALEase.h */,
+				271CA3A020AA0ADA0052A6F3 /* RALAnimation.m */,
+				271CA3A120AA0ADA0052A6F3 /* RALUnitBezier.h */,
+				271CA3A220AA0ADA0052A6F3 /* RALAnimation.h */,
+				271CA3A320AA0ADA0052A6F3 /* RALEase.m */,
+				271CA3A420AA0ADA0052A6F3 /* RALUnitBezier.m */,
+			);
+			path = RALAnimation;
+			sourceTree = "<group>";
+		};
 		27D29FE8209C7ADA0099D488 = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +140,7 @@
 		27D29FF3209C7ADA0099D488 /* DemoTabbedApp */ = {
 			isa = PBXGroup;
 			children = (
+				271CA3A820AA0C390052A6F3 /* Bridging-Header.h */,
 				27D29FF4209C7ADA0099D488 /* AppDelegate.swift */,
 				27D29FFB209C7ADA0099D488 /* Assets.xcassets */,
 				27D2A02E209CAE4C0099D488 /* DiscoveryViewController.swift */,
@@ -126,6 +150,7 @@
 				27D29FFD209C7ADA0099D488 /* LaunchScreen.storyboard */,
 				27D2A02A209C807D0099D488 /* MainMapViewController.swift */,
 				27D2A028209C80570099D488 /* PostButton.swift */,
+				271CA39E20AA0ADA0052A6F3 /* RALAnimation */,
 				27D29FF8209C7ADA0099D488 /* Root.storyboard */,
 				27D29FF6209C7ADA0099D488 /* RootViewController.swift */,
 				27D2A022209C7C510099D488 /* UIView+Anchor.swift */,
@@ -293,7 +318,9 @@
 				27D2A027209C7E5A0099D488 /* YMTabBarViewController.swift in Sources */,
 				271CA39D20A5FD830052A6F3 /* YMTabbedViewController.swift in Sources */,
 				27D2A033209CAE910099D488 /* ProfileViewController.swift in Sources */,
+				271CA3A720AA0ADA0052A6F3 /* RALUnitBezier.m in Sources */,
 				27D2A03520A0CAF30099D488 /* YMTabBarView.swift in Sources */,
+				271CA3A520AA0ADA0052A6F3 /* RALAnimation.m in Sources */,
 				27D2A029209C80570099D488 /* PostButton.swift in Sources */,
 				27D29FF7209C7ADA0099D488 /* RootViewController.swift in Sources */,
 				27D2A031209CAE6E0099D488 /* NoticationsViewController.swift in Sources */,
@@ -301,6 +328,7 @@
 				27D2A025209C7D4C0099D488 /* UIViewController+SafeArea.swift in Sources */,
 				27D2A023209C7C510099D488 /* UIView+Anchor.swift in Sources */,
 				27D2A02F209CAE4C0099D488 /* DiscoveryViewController.swift in Sources */,
+				271CA3A620AA0ADA0052A6F3 /* RALEase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -476,6 +504,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.heliotropix.DemoTabbedApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "DemoTabbedApp/Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -491,6 +520,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.heliotropix.DemoTabbedApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "DemoTabbedApp/Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
