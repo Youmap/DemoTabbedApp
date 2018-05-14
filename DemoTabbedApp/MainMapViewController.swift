@@ -11,11 +11,15 @@ import UIKit
 class MainMapViewController : YMTabbedViewController {
 	
 	init() {
-		let iconName = "homeIcon"
-		guard let icon = UIImage(named: iconName) else {
-			fatalError("\(iconName) is missing from Assets")
+		let normalIconName = "homeIcon"
+		guard let normalIcon = UIImage(named: normalIconName) else {
+			fatalError("\(normalIconName) is missing from Assets")
 		}
-		super.init(normalIcon: icon, highlightedIcon: icon, selectedIcon: icon, disabledIcon: icon)
+		let selectedIconName = "home-selected"
+		guard let selectedIcon = UIImage(named: selectedIconName) else {
+			fatalError("\(selectedIconName) is missing from Assets")
+		}
+    	super.init(normalIcon: normalIcon, highlightedIcon: normalIcon, selectedIcon: selectedIcon, disabledIcon: normalIcon)
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
