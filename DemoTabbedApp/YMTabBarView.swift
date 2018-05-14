@@ -15,10 +15,20 @@ protocol YMTabBarTabViewDelegate {
 	var disabledIcon : UIImage { get }
 	var intrinsicContentSize : CGSize { get }
 	var uiViewController : UIViewController { get }
+	var isToggle : Bool { get }
 }
 
 protocol YMTabBarTabEventDelegate {
 	func tabSelect(tab : YMTabBarTab)
+	func toggleSelect(tab : YMTabBarTab)
+}
+
+extension YMTabBarTabEventDelegate {
+	func tabSelect(tab : YMTabBarTab) {
+	}
+
+	func toggleSelect(tab : YMTabBarTab) {
+	}
 }
 
 class YMTabBarTab : UIButton {
@@ -26,7 +36,7 @@ class YMTabBarTab : UIButton {
 	internal static let tabBarHeight = CGFloat(60)
 
 	private let eventDelegate : YMTabBarTabEventDelegate
-	private let viewDelegate : YMTabBarTabViewDelegate
+	internal let viewDelegate : YMTabBarTabViewDelegate
 
 	init(eventDelegate : YMTabBarTabEventDelegate, viewDelegate : YMTabBarTabViewDelegate) {
 		self.eventDelegate = eventDelegate
@@ -54,7 +64,12 @@ class YMTabBarTab : UIButton {
 	}
 
 	@objc internal func handleTabSelect() {
-		eventDelegate.tabSelect(tab: self)
+		if viewDelegate.isToggle {
+			eventDelegate.toggleSelect(tab: self)
+		}
+		else {
+			eventDelegate.tabSelect(tab: self)
+		}
 	}
 
 	internal var uiViewController : UIViewController { get { return viewDelegate.uiViewController }}

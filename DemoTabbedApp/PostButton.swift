@@ -26,4 +26,9 @@ class PostButtonViewController : YMTabbedViewController {
 	}
 
 	override var intrinsicContentSize: CGSize { get { return CGSize(width: 60.0, height: 60.0) } }
+
+	override var isToggle : Bool { get {
+			return true
+		}
+	}
 }

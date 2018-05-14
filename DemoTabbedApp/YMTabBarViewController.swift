@@ -46,6 +46,10 @@ class YMTabBarViewController : UIViewController, YMTabBarTabEventDelegate {
 		displayView.insertSubview(currentSelectedTab.uiViewController.view, belowSubview: tabBarView.superview!)
 	}
 
+	internal func toggleSelect(tab : YMTabBarTab) {
+		tab.isSelected = !tab.isSelected
+	}
+
 	internal func tabSelect(tab : YMTabBarTab) {
 		animate(from: currentSelectedTab, to: tab)
 		currentSelectedTab = tab
