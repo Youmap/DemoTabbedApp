@@ -18,10 +18,6 @@ class RootViewController: UIViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-//view.backgroundColor = .yellow
-
-		// Create the tabbed ViewControllers to display.
-		let tabbedViewControllers : [YMTabBarTabViewDelegate] = [MainMapViewController(), DiscoveryViewController(), PostButtonViewController(), NoticationsViewController(), ProfileViewController()]
 
 		// Create a background view that contains the tabbar.
 		let backgroundTabBarContainer = UIView()
@@ -29,12 +25,14 @@ class RootViewController: UIViewController {
 		let tabBarHeight = CGFloat(60)
 		let safeZoneHeight = CGFloat(44)
 		backgroundTabBarContainer.anchor(right: view.rightAnchor, bottom: safeBottomAnchor, left: view.leftAnchor, paddingBottom: -safeZoneHeight, height: tabBarHeight + safeZoneHeight)
-//backgroundTabBarContainer.backgroundColor = .blue
 
 		let gradientImage = UIImage(named: "tabBarBackgroundGradient")
 		let backgroundGradientView = UIImageView(image: gradientImage)
 		backgroundTabBarContainer.addSubview(backgroundGradientView)
 		backgroundGradientView.anchor(right: view.rightAnchor, bottom: safeBottomAnchor, left: view.leftAnchor, paddingBottom: -safeZoneHeight, height: tabBarHeight + safeZoneHeight + 16)
+
+		// Create the tabbed ViewControllers to display.
+		let tabbedViewControllers : [YMTabBarTabViewDelegate] = [MainMapViewController(), DiscoveryViewController(), PostButtonViewController(), NoticationsViewController(), ProfileViewController()]
 
 		// Create the TabBar View Controller.
 		tabbarViewController = YMTabBarViewController(tabDelegates: tabbedViewControllers, displayView: view)
@@ -43,6 +41,7 @@ class RootViewController: UIViewController {
 		// Position the tabbar anchor to the top of the tabbar container
 		tabbarViewController.view.anchor(top: backgroundTabBarContainer.topAnchor, right: backgroundTabBarContainer.rightAnchor, left: backgroundTabBarContainer.leftAnchor, height: tabBarHeight)
 
+		// Add the tabbar view to the RootViewController's view
 		self.addChildViewController(tabbarViewController)
 	}
 

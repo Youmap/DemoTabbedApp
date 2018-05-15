@@ -49,8 +49,6 @@ class YMTabBarViewController : UIViewController, YMTabBarTabEventDelegate {
 	internal func toggleSelect(tab : YMTabBarTab) {
 		tab.isEnabled = false
 		animateToggleButton(buttonView: tab, isSelected: !tab.viewDelegate.toggleState) { (_) in
-//print(#function + ", tab.isSelected == \(tab.isSelected.description)")
-//			tab.isSelected = !tab.isSelected
 			let state = !tab.viewDelegate.toggleState
 			tab.viewDelegate.toggleState = state
 			tab.isEnabled = true
@@ -58,7 +56,6 @@ class YMTabBarViewController : UIViewController, YMTabBarTabEventDelegate {
 	}
 
 	internal func tabSelect(tab : YMTabBarTab) {
-print(#function + ", tab.isSelected == \(tab.isSelected.description)")
 		animate(from: currentSelectedTab, to: tab)
 		currentSelectedTab = tab
 	}
