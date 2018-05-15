@@ -47,10 +47,18 @@ class YMTabBarViewController : UIViewController, YMTabBarTabEventDelegate {
 	}
 
 	internal func toggleSelect(tab : YMTabBarTab) {
-		tab.isSelected = !tab.isSelected
+		tab.isEnabled = false
+		animateToggleButton(buttonView: tab, isSelected: !tab.viewDelegate.toggleState) { (_) in
+//print(#function + ", tab.isSelected == \(tab.isSelected.description)")
+//			tab.isSelected = !tab.isSelected
+			let state = !tab.viewDelegate.toggleState
+			tab.viewDelegate.toggleState = state
+			tab.isEnabled = true
+		}
 	}
 
 	internal func tabSelect(tab : YMTabBarTab) {
+print(#function + ", tab.isSelected == \(tab.isSelected.description)")
 		animate(from: currentSelectedTab, to: tab)
 		currentSelectedTab = tab
 	}
@@ -112,29 +120,19 @@ class YMTabBarViewController : UIViewController, YMTabBarTabEventDelegate {
         })
     }
 
-//    private func animatePressedPostButton() {
-//        if postPressed == false {
-//            postPressed = true
-//            let postItemImageView = customTabBar.getIconView(for: .post)
-//            if let transform = postItemImageView.layer.presentation()?.affineTransform() {
-//                postItemImageView.layer.removeAllAnimations()
-//                postItemImageView.transform = transform
-//            }
-//
-//            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 1.5, options: [.curveEaseOut, .beginFromCurrentState], animations: {
-//                postItemImageView.transform = CGAffineTransform(rotationAngle: .pi / 4)
-//                postItemImageView.transform = postItemImageView.transform.scaledBy(x: 1.3, y: 1.3)
-//            }, completion: { _ in
-//
-//                UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0, options: .allowUserInteraction, animations: {
-//                    postItemImageView.transform = CGAffineTransform(rotationAngle: .pi / 4)
-//                    postItemImageView.transform = postItemImageView.transform.scaledBy(x: 1.0, y: 1.0)
-//                }, completion: nil)
-//            })
-//
-//        } else {
-//
-//           self.reset()
-//        }
-//    }
+	private func animateToggleButton(buttonView : UIView, isSelected : Bool, onCompletion: @escaping (Bool)->Void) {
+		let transform = isSelected ? CGAffineTransform(rotationAngle: .pi / 4) : CGAffineTransform(rotationAngle: 0.0)
+
+		UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 1.5, options: [.curveEaseOut, .beginFromCurrentState], animations: {
+			buttonView.transform = transform
+			buttonView.transform = buttonView.transform.scaledBy(x: 1.3, y: 1.3)
+		}, completion: { _ in
+
+			UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0, options: .allowUserInteraction, animations: {
+				buttonView.transform = transform
+				buttonView.transform = buttonView.transform.scaledBy(x: 1.0, y: 1.0)
+			}, completion: onCompletion)
+		})
+
+    }
 }

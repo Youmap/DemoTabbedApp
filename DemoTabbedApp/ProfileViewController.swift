@@ -15,7 +15,7 @@ class ProfileViewController : YMTabbedViewController {
 		guard let normalIcon = UIImage(named: normalIconName) else {
 			fatalError("\(normalIconName) is missing from Assets")
 		}
-		let selectedIconName = "profileIcon"
+		let selectedIconName = "post-selected"
 		guard let selectedIcon = UIImage(named: selectedIconName) else {
 			fatalError("\(selectedIconName) is missing from Assets")
 		}
@@ -25,7 +25,7 @@ class ProfileViewController : YMTabbedViewController {
 	required init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
-	
+
 	override func viewDidLoad() {
 		view.backgroundColor = .green
 	}

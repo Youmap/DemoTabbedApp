@@ -10,12 +10,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DemoTabbedApp/YMTabBarViewController.swift"
-            timestampString = "547796232.116064"
+            timestampString = "548102409.116804"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "toggleSelect(tab:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DemoTabbedApp/YMTabBarViewController.swift"
+            timestampString = "548102409.1174411"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "toggleSelect(tab:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -26,13 +42,45 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DemoTabbedApp/YMTabBarViewController.swift"
-            timestampString = "547796232.116426"
+            timestampString = "548102409.1177011"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
-            landmarkName = "YMTabBarViewController"
-            landmarkType = "3">
+            startingLineNumber = "128"
+            endingLineNumber = "128"
+            landmarkName = "animateToggleButton(buttonView:isSelected:onCompletion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DemoTabbedApp.YMTabBarViewController.(animateToggleButton in _8391CBF17C8C7147C4D8272669CCE3A2)(buttonView: __ObjC.UIView, isSelected: Swift.Bool, onCompletion: (Swift.Bool) -&gt; ()) -&gt; ()"
+                  moduleName = "DemoTabbedApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Mike/dev/sandbox/iOS/DemoTabbedApp/DemoTabbedApp/YMTabBarViewController.swift"
+                  timestampString = "548098399.601053"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "130"
+                  endingLineNumber = "130"
+                  offsetFromSymbolStart = "371">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in DemoTabbedApp.YMTabBarViewController.(animateToggleButton in _8391CBF17C8C7147C4D8272669CCE3A2)(buttonView: __ObjC.UIView, isSelected: Swift.Bool, onCompletion: (Swift.Bool) -&gt; ()) -&gt; ()"
+                  moduleName = "DemoTabbedApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Mike/dev/sandbox/iOS/DemoTabbedApp/DemoTabbedApp/YMTabBarViewController.swift"
+                  timestampString = "548098399.602658"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "131"
+                  endingLineNumber = "131"
+                  offsetFromSymbolStart = "122">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -42,12 +90,60 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DemoTabbedApp/YMTabBarViewController.swift"
-            timestampString = "547796232.1164989"
+            timestampString = "548102409.118004"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
-            landmarkName = "tabSelect(tab:)"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
+            landmarkName = "animateToggleButton(buttonView:isSelected:onCompletion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Bool) -&gt; () in DemoTabbedApp.YMTabBarViewController.(animateToggleButton in _8391CBF17C8C7147C4D8272669CCE3A2)(buttonView: __ObjC.UIView, isSelected: Swift.Bool, onCompletion: (Swift.Bool) -&gt; ()) -&gt; ()"
+                  moduleName = "DemoTabbedApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Mike/dev/sandbox/iOS/DemoTabbedApp/DemoTabbedApp/YMTabBarViewController.swift"
+                  timestampString = "548098399.607141"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "135"
+                  endingLineNumber = "135"
+                  offsetFromSymbolStart = "27">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in closure #2 (Swift.Bool) -&gt; () in DemoTabbedApp.YMTabBarViewController.(animateToggleButton in _8391CBF17C8C7147C4D8272669CCE3A2)(buttonView: __ObjC.UIView, isSelected: Swift.Bool, onCompletion: (Swift.Bool) -&gt; ()) -&gt; ()"
+                  moduleName = "DemoTabbedApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Mike/dev/sandbox/iOS/DemoTabbedApp/DemoTabbedApp/YMTabBarViewController.swift"
+                  timestampString = "548098399.608865"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "136"
+                  endingLineNumber = "136"
+                  offsetFromSymbolStart = "122">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DemoTabbedApp/YMTabBarViewController.swift"
+            timestampString = "548102409.118224"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "134"
+            endingLineNumber = "134"
+            landmarkName = "animateToggleButton(buttonView:isSelected:onCompletion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

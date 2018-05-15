@@ -20,7 +20,7 @@ class PostButtonViewController : YMTabbedViewController {
 		}
     	super.init(normalIcon: normalIcon, highlightedIcon: normalIcon, selectedIcon: selectedIcon, disabledIcon: normalIcon)
 	}
-	
+
 	required init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
@@ -29,6 +29,17 @@ class PostButtonViewController : YMTabbedViewController {
 
 	override var isToggle : Bool { get {
 			return true
+		}
+	}
+
+	private var _toggleState : Bool = false
+	override var toggleState : Bool {
+		get {
+			return _toggleState
+		}
+
+		set {
+			_toggleState = newValue
 		}
 	}
 }

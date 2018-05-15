@@ -16,6 +16,7 @@ protocol YMTabBarTabViewDelegate {
 	var intrinsicContentSize : CGSize { get }
 	var uiViewController : UIViewController { get }
 	var isToggle : Bool { get }
+	var toggleState : Bool { get set }
 }
 
 protocol YMTabBarTabEventDelegate {
@@ -36,7 +37,7 @@ class YMTabBarTab : UIButton {
 	internal static let tabBarHeight = CGFloat(60)
 
 	private let eventDelegate : YMTabBarTabEventDelegate
-	internal let viewDelegate : YMTabBarTabViewDelegate
+	internal var viewDelegate : YMTabBarTabViewDelegate
 
 	init(eventDelegate : YMTabBarTabEventDelegate, viewDelegate : YMTabBarTabViewDelegate) {
 		self.eventDelegate = eventDelegate
@@ -98,8 +99,6 @@ class YMTabBarView : UIView {
 	internal func addTab(eventDelegate : YMTabBarTabEventDelegate, viewDelegate : YMTabBarTabViewDelegate) {
 		let tab = YMTabBarTab(eventDelegate: eventDelegate, viewDelegate: viewDelegate)
 		tabs.append(tab)
-//let hue = CGFloat(arc4random_uniform(100)) / 100.0
-//tab.backgroundColor = .yellow	//UIColor(hue: hue, saturation: 1.0, brightness: 1.0, alpha: 1.0)
 		stackView.addArrangedSubview(tab)
 		tab.anchor(top: stackView.topAnchor)
 	}

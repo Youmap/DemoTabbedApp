@@ -47,8 +47,18 @@ class YMTabbedViewController :  UIViewController, YMTabBarTabViewDelegate {
 
 	var uiViewController : UIViewController { get { return self }}
 
-	var isToggle : Bool { get {
+	var isToggle : Bool {
+		get {
 			return false
+		}
+	}
+
+	var toggleState : Bool {
+		get {
+			return false
+		}
+
+		set {
 		}
 	}
 }
