@@ -8,7 +8,18 @@
 
 import UIKit
 
-class PostButtonViewController : YMTabbedViewController {
+class PostButton : YMTabBarToggle {
+	init() {
+		super.init(tabDelegate: PostButtonDelegate())
+	}
+
+	required init?(coder aDecoder: NSCoder) {
+		fatalError(#function + "init(coder:) has not been implemented")
+	}
+}
+
+class PostButtonDelegate : YMTabBarTabButtonDelegateBase {
+
 	init() {
 		let normalIconName = "postButtonIcon"
 		guard let normalIcon = UIImage(named: normalIconName) else {
@@ -20,26 +31,21 @@ class PostButtonViewController : YMTabbedViewController {
 		}
     	super.init(normalIcon: normalIcon, highlightedIcon: normalIcon, selectedIcon: selectedIcon, disabledIcon: normalIcon)
 	}
+}
+
+class PostButtonViewController : UIViewController {
+	init() {
+		super.init(nibName: nil, bundle: nil)
+	}
 
 	required init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
 
-	override var intrinsicContentSize: CGSize { get { return CGSize(width: 60.0, height: 60.0) } }
-
-	override var isToggle : Bool { get {
-			return true
-		}
+	override func viewDidLoad() {
+		view.backgroundColor = .red
 	}
 
-	private var _toggleState : Bool = false
-	override var toggleState : Bool {
-		get {
-			return _toggleState
-		}
-
-		set {
-			_toggleState = newValue
-		}
+	override func viewWillAppear(_ animated: Bool) {
 	}
 }

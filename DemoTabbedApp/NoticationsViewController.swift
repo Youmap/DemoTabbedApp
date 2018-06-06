@@ -8,8 +8,18 @@
 
 import UIKit
 
-class NoticationsViewController : YMTabbedViewController {
-	
+class NoticationsTab : YMTabBarTab {
+	init() {
+		super.init(tabDelegate: NoticationsTabDelegate())
+	}
+
+	required init?(coder aDecoder: NSCoder) {
+		fatalError(#function + "init(coder:) has not been implemented")
+	}
+}
+
+class NoticationsTabDelegate : YMTabBarTabButtonDelegateBase {
+
 	init() {
 		let normalIconName = "notificationIcon"
 		guard let normalIcon = UIImage(named: normalIconName) else {
@@ -19,17 +29,21 @@ class NoticationsViewController : YMTabbedViewController {
 		guard let selectedIcon = UIImage(named: selectedIconName) else {
 			fatalError("\(selectedIconName) is missing from Assets")
 		}
-    	super.init(normalIcon: normalIcon, highlightedIcon: normalIcon, selectedIcon: selectedIcon, disabledIcon: normalIcon)
+	   	super.init(normalIcon: normalIcon, highlightedIcon: normalIcon, selectedIcon: selectedIcon, disabledIcon: normalIcon,
+			tabbedContentViewController: NoticationsViewController())
 	}
-	
+}
+
+class NoticationsViewController : UIViewController {
+	init() {
+		super.init(nibName: nil, bundle: nil)
+	}
+
 	required init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
-	
+
 	override func viewDidLoad() {
 		view.backgroundColor = .cyan
-	}
-	
-	override func viewWillAppear(_ animated: Bool) {
 	}
 }

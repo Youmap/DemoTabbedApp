@@ -8,65 +8,90 @@
 
 import UIKit
 
-class YMTabBarViewController : UIViewController, YMTabBarTabEventDelegate {
-	private let displayView: UIView
-	private let tabDelegates : [YMTabBarTabViewDelegate]
-	private var tabBarView = YMTabBarView()
-	internal var currentSelectedTab : YMTabBarTab!
+class YMTabBarViewController : UIViewController {
+	private let contentDisplayView: UIView
+		// This is the view in which to display each tabbed view's content.
 
-	required init(tabDelegates : [YMTabBarTabViewDelegate], displayView: UIView) {
-		self.tabDelegates = tabDelegates
-		self.displayView = displayView
+	private let tabButtons : [YMTabBarTabButton]
+		// The tab bar buttons.
+
+	private var tabBarView = YMTabBarView()
+
+	internal var currentSelectedTab : YMTabBarTabButton!
+		// The currently selected tab.
+
+	required init(tabButtons : [YMTabBarTabButton], contentDisplayView: UIView) {
+		self.tabButtons = tabButtons
+		self.contentDisplayView = contentDisplayView
 		super.init(nibName: nil, bundle: nil)
 	}
 
 	required init?(coder : NSCoder) {
-		self.tabDelegates = []
-		self.displayView = UIView()
+		self.tabButtons = []
+		self.contentDisplayView = UIView()
 		super.init(coder: coder)
         fatalError("init(coder:) has not been implemented")
 	}
 
 	override func viewDidLoad() {
-		// Add the tabbarView to the view
+		// Add the tabbarView to the view.
 		view = tabBarView
 		tabBarView.anchor(top: view.topAnchor, right: view.rightAnchor, bottom: view.bottomAnchor, left: view.leftAnchor)
 
-		// Add the tabs
-		for delegate in self.tabDelegates {
-			tabBarView.addTab(eventDelegate: self, viewDelegate: delegate)
+		// Add the tabs to the view.
+		for button in self.tabButtons {
+			tabBarView.addTab(tabBarButton: button)
 		}
-		
-		currentSelectedTab = tabBarView.tabs.first
+
+		// Set the action target for each delegate tabBarButton.
+		for button in self.tabButtons {
+			button.setActionTarget(tabBarViewController: self)
+		}
+
+		currentSelectedTab = tabButtons.first
 		currentSelectedTab.isSelected = true
 	}
 
 	override func viewWillAppear(_ animated: Bool) {
-		// Show the initial viewController's view
-		displayView.insertSubview(currentSelectedTab.uiViewController.view, belowSubview: tabBarView.superview!)
+		guard let viewController = currentSelectedTab.uiViewController else {
+			return
+		}
+		guard let tabBarParent = tabBarView.superview else {
+			return
+		}
+		// Show the currently selected viewController's view.
+		contentDisplayView.insertSubview(viewController.view, belowSubview: tabBarParent)
 	}
 
-	internal func toggleSelect(tab : YMTabBarTab) {
+	internal func handleToggleSelect(tab : YMTabBarToggle) {
+		// Called when a YMTabBarToggle is selected.
 		tab.isEnabled = false
-		animateToggleButton(buttonView: tab, isSelected: !tab.viewDelegate.toggleState) { (_) in
-			let state = !tab.viewDelegate.toggleState
-			tab.viewDelegate.toggleState = state
+		animateToggleButton(buttonView: tab, isSelected: !tab.toggleState) { (_) in
+			tab.toggleState = !tab.toggleState
 			tab.isEnabled = true
+			// Note: this does not change the currently selected tab.
 		}
 	}
 
-	internal func tabSelect(tab : YMTabBarTab) {
+	internal func handleTabSelect(tab : YMTabBarTab) {
+		// Called when a YMTabBarTab is selected.
 		animate(from: currentSelectedTab, to: tab)
 		currentSelectedTab = tab
 	}
 
-	private func animate(from fromTab: YMTabBarTab, to toTab : YMTabBarTab) {
+	private func animate(from fromTab: YMTabBarTabButton, to toTab : YMTabBarTabButton) {
 		guard fromTab != toTab else {
 			return
 		}
-	
+		guard let fromViewController = fromTab.uiViewController else {
+			return
+		}
+		guard let toViewController = toTab.uiViewController else {
+			return
+		}
+
 		// Update the tabbed view controller's content
-		animate(from: fromTab.uiViewController, to: toTab.uiViewController)
+		animate(from: fromViewController, to: toViewController)
 
 		// Update the tabs
 		animate(tabView: toTab)
@@ -76,7 +101,7 @@ class YMTabBarViewController : UIViewController, YMTabBarTabEventDelegate {
 
     private func animate(from fromVC: UIViewController, to toVC: UIViewController) {
 
-		displayView.insertSubview(toVC.view, belowSubview: tabBarView.superview!)
+		contentDisplayView.insertSubview(toVC.view, belowSubview: tabBarView.superview!)
 		parent?.addChildViewController(toVC)
 
         // Send the current navigation controller view to the back

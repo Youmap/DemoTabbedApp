@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		271CA39D20A5FD830052A6F3 /* YMTabbedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271CA39C20A5FD830052A6F3 /* YMTabbedViewController.swift */; };
+		271CA39D20A5FD830052A6F3 /* YMTabBarTabButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271CA39C20A5FD830052A6F3 /* YMTabBarTabButton.swift */; };
 		271CA3A520AA0ADA0052A6F3 /* RALAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 271CA3A020AA0ADA0052A6F3 /* RALAnimation.m */; };
 		271CA3A620AA0ADA0052A6F3 /* RALEase.m in Sources */ = {isa = PBXBuildFile; fileRef = 271CA3A320AA0ADA0052A6F3 /* RALEase.m */; };
 		271CA3A720AA0ADA0052A6F3 /* RALUnitBezier.m in Sources */ = {isa = PBXBuildFile; fileRef = 271CA3A420AA0ADA0052A6F3 /* RALUnitBezier.m */; };
@@ -47,7 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		271CA39C20A5FD830052A6F3 /* YMTabbedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YMTabbedViewController.swift; sourceTree = "<group>"; };
+		271CA39C20A5FD830052A6F3 /* YMTabBarTabButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YMTabBarTabButton.swift; sourceTree = "<group>"; };
 		271CA39F20AA0ADA0052A6F3 /* RALEase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RALEase.h; sourceTree = "<group>"; };
 		271CA3A020AA0ADA0052A6F3 /* RALAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RALAnimation.m; sourceTree = "<group>"; };
 		271CA3A120AA0ADA0052A6F3 /* RALUnitBezier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RALUnitBezier.h; sourceTree = "<group>"; };
@@ -157,7 +157,7 @@
 				27D2A024209C7D4C0099D488 /* UIViewController+SafeArea.swift */,
 				27D2A03420A0CAF30099D488 /* YMTabBarView.swift */,
 				27D2A026209C7E5A0099D488 /* YMTabBarViewController.swift */,
-				271CA39C20A5FD830052A6F3 /* YMTabbedViewController.swift */,
+				271CA39C20A5FD830052A6F3 /* YMTabBarTabButton.swift */,
 			);
 			path = DemoTabbedApp;
 			sourceTree = "<group>";
@@ -316,7 +316,7 @@
 			files = (
 				27D2A02B209C807D0099D488 /* MainMapViewController.swift in Sources */,
 				27D2A027209C7E5A0099D488 /* YMTabBarViewController.swift in Sources */,
-				271CA39D20A5FD830052A6F3 /* YMTabbedViewController.swift in Sources */,
+				271CA39D20A5FD830052A6F3 /* YMTabBarTabButton.swift in Sources */,
 				27D2A033209CAE910099D488 /* ProfileViewController.swift in Sources */,
 				271CA3A720AA0ADA0052A6F3 /* RALUnitBezier.m in Sources */,
 				27D2A03520A0CAF30099D488 /* YMTabBarView.swift in Sources */,
